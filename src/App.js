@@ -1,8 +1,11 @@
 import React from "react";
+import Flashcards from "./views/Flashcards";
 
 const App = () => {
     return (
-        <h1>App</h1>
+        <div>
+            <Flashcards />
+        </div>
     )
 }
 
