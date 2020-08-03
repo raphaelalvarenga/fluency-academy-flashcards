@@ -1,9 +1,14 @@
 import React from "react";
-import styled from "styled-components";
+import { Container, Content } from "../styled-components";
 
 const Flashcards = () => {
     return (
-        <h1>Flashcards</h1>
+        <Content>
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+        </Content>
     )
 }
 

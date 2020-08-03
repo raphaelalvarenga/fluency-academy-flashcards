@@ -1,11 +1,15 @@
 import React from "react";
 import Flashcards from "./views/Flashcards";
+import { Container, GlobalStyle } from "./styled-components";
 
 const App = () => {
     return (
-        <div>
-            <Flashcards />
-        </div>
+        <>
+            <GlobalStyle />
+            <Container>
+                <Flashcards />
+            </Container>
+        </>
     )
 }
 
