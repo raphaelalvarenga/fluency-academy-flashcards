@@ -6,7 +6,6 @@ export const GlobalStyle = createGlobalStyle`
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        font-family: Arial
     }
 `
 
@@ -128,14 +127,62 @@ export const Card = styled.div`
     border-style: solid;
     min-width: 683px;
     min-height: 340px;
-    line-height: 340px;
     text-align: center;
     margin-right: 200px;
     transition: 0.5s;
+    padding: 15px 20px;
+    background-color: rgb(255, 255, 255);
+    border-color: rgb(200, 200, 200);
+    border-width: 1px;
+    border-radius: 20px;
 
     ${
         props => props.marginLeft && css`
             margin-left: ${props.marginLeft}
         `
     }
+`
+export const CardHeader = styled.div`
+    display: flex;
+    justify-content: space-between;
+    padding-right: 15px;
+`
+
+export const CardContent = styled.div`
+    text-align: left;
+    padding: 0 15px;
+`
+
+export const CardAnswer = styled.div`
+    height: 100px;
+    display: flex;
+    align-items: flex-end;
+    width: 50%;
+    color: rgb(180, 180, 180);
+    font-size: 18px;
+`
+
+export const CardQuestion = styled.div`
+    font-size: 30px;
+    height: 150px;
+    font-weight: bold;
+    width: 90%;
+`
+
+export const CardAudio = styled.div`
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    align-items: flex-end;
+`
+export const PlayButton = styled.button`
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 25px;
+    border-style: none;
+    background-color: rgb(72, 174, 224);
+    color: rgb(255, 255, 255);
+    cursor: pointer;
 `
