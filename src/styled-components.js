@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle, css } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
     body {
@@ -30,21 +30,43 @@ export const Header = styled.div`
     display: flex;
     border-collapse: collapse;
     border: 1px solid rgb(200, 200, 200);
+    background-color: rgb(252,253,254);
+    height: 60px;
+    line-height: 60px;
 `
 
 export const HeaderItems = styled.div`
-    padding: 20px;
     border: 1px solid rgb(200, 200, 200);
+    padding: 0 20px;
 `
 export const HeaderProgress = styled.div`
     flex: 1;
-    padding: 20px;
     text-align: center;
     border: 1px solid rgb(200, 200, 200);
     display: flex;
     justify-content: space-around;
+    padding: 0 20px;
 `
 
 export const Button = styled.button`
-    
+    border-style: none;
+    background-color: transparent;
+    cursor: pointer;
+    outline-style: none;
+    padding: 5px 15px;
+
+    ${
+        props => props.color === "danger" && css`
+            color: red;
+        `
+    }
+
+    ${
+        props => props.fill === "outlined" && css`
+            border-style: solid;
+            border-radius: 5px;
+            border-color: rgb(200, 200, 200)
+        `
+    }
 `
+        
