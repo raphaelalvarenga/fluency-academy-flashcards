@@ -124,26 +124,32 @@ export const CardsSection = styled.div`
     border-right: 1px solid rgb(200, 200, 200);
     border-bottom: 1px solid rgb(200, 200, 200);
 `
-    
-export const Card = styled.div`
-    border-style: solid;
-    min-width: 683px;
-    min-height: 340px;
-    text-align: center;
-    margin-right: 200px;
-    transition: 0.5s;
-    padding: 15px 20px;
-    background-color: rgb(255, 255, 255);
-    border-color: rgb(200, 200, 200);
-    border-width: 1px;
-    border-radius: 20px;
 
+export const CardSection = styled.div`
+    transition: 0.5s;
+    border-width: 1px;
+    margin-right: 200px;
     ${
         props => props.marginLeft && css`
             margin-left: ${props.marginLeft}
         `
     }
 `
+
+export const Card = styled.div`
+    border-style: solid;
+    min-width: 683px;
+    min-height: 340px;
+    text-align: center;
+    
+    padding: 15px 20px;
+    border-width: 1px;
+    background-color: rgb(255, 255, 255);
+    border-color: rgb(200, 200, 200);
+    border-radius: 20px;
+`
+    
+
 export const CardHeader = styled.div`
     display: flex;
     justify-content: space-between;
@@ -193,7 +199,6 @@ export const PlayButton = styled.button`
     }
 `
 
-// border-style: solid;
 export const DifficultButtons = styled.div`
     display: flex;
     justify-content: space-around;
@@ -215,10 +220,6 @@ export const DifficultButton = styled.button`
     &:hover {
         background-color: rgb(42, 142, 182);
     }
-`
-
-export const CardSection = styled.div`
-    
 `
 
 export const DifficultButtonLabel = styled.div`

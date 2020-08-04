@@ -17,7 +17,6 @@ const Flashcards = () => {
     
     return (
         <Content>
-            {cardMargin}
             <Header>
                 <HeaderItems>
                     <Button color = "danger" fill = "outlined"><FontAwesomeIcon icon = {faArrowLeft} /> Sair</Button>
@@ -56,50 +55,36 @@ const Flashcards = () => {
             <CardsSection>
                 {
                     cards.map((card, index) => (
-                        <Card marginLeft = {index === 0 ? `${cardMargin}px` : 0}>
-                            <CardHeader>
-                                <div>
-                                    <Button color = "danger">
-                                        <FontAwesomeIcon icon = {faSync} /> Virar Carta
-                                    </Button>
-                                </div>
-                                <div>A \ B</div>
-                            </CardHeader>
-
-                            <CardContent>
-                                <CardAnswer>
-                                    <div>Sua empresa não é tão bem-sucedida quanto a empresa dele.</div>
-                                </CardAnswer>
-
-                                <CardQuestion>
-                                    <div>Your company is not as successful as his company.</div>
-                                </CardQuestion>
-
-                                <CardAudio>
-                                    <div>Áudio</div>
+                        <CardSection marginLeft = {index === 0 ? `${cardMargin}px` : 0}>
+                            <Card>
+                                <CardHeader>
                                     <div>
-                                        <PlayButton><FontAwesomeIcon icon = {faPlay} /></PlayButton>
+                                        <Button color = "danger">
+                                            <FontAwesomeIcon icon = {faSync} /> Virar Carta
+                                        </Button>
                                     </div>
-                                </CardAudio>
-                            </CardContent>
+                                    <div>A \ B</div>
+                                </CardHeader>
 
-                            
-                            <div style = {{textAlign: "center"}}>
-                                {/* <Button
-                                    fill = "outlined"
-                                    disabled = {index === 0 ? true : false}
-                                    onClick = {() => setCardMargin(cardMargin + 925)}
-                                >Anterior</Button>
+                                <CardContent>
+                                    <CardAnswer>
+                                        <div>Sua empresa não é tão bem-sucedida quanto a empresa dele.</div>
+                                    </CardAnswer>
 
-                                <Button
-                                    fill = "outlined"
-                                    disabled = {index === cards.length - 1 ? true : false}
-                                    onClick = {() => setCardMargin(cardMargin - 925)}
-                                >Próximo</Button> */}
-                            </div>
+                                    <CardQuestion>
+                                        <div>Your company is not as successful as his company.</div>
+                                    </CardQuestion>
 
+                                    <CardAudio>
+                                        <div>Áudio</div>
+                                        <div>
+                                            <PlayButton><FontAwesomeIcon icon = {faPlay} /></PlayButton>
+                                        </div>
+                                    </CardAudio>
+                                </CardContent>
+                            </Card>
 
-                            {/* <DifficultButtons marginLeft = {index === 0 ? `${cardMargin}px` : 0}>
+                            <DifficultButtons marginLeft = {index === 0 ? `${cardMargin}px` : 0}>
                                 <div>
                                     <div>
                                         <DifficultButton>FÁCIL</DifficultButton>
@@ -124,8 +109,26 @@ const Flashcards = () => {
                                     </div>
                                     <DifficultButtonLabel>Digite 4</DifficultButtonLabel>
                                 </div>
-                            </DifficultButtons> */}
-                        </Card>
+                            </DifficultButtons>
+
+
+                            
+                            <div style = {{textAlign: "center"}}>
+                                <Button
+                                    fill = "outlined"
+                                    disabled = {index === 0 ? true : false}
+                                    onClick = {() => setCardMargin(cardMargin + 925)}
+                                >Anterior</Button>
+
+                                <Button
+                                    fill = "outlined"
+                                    disabled = {index === cards.length - 1 ? true : false}
+                                    onClick = {() => setCardMargin(cardMargin - 925)}
+                                >Próximo</Button>
+                            </div>
+
+
+                        </CardSection>
                     ))
                 }
             </CardsSection>
