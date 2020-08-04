@@ -23,13 +23,11 @@ export const Content = styled.div`
     width: 1366px;
     height: 768px;
     background-color: rgb(246,253,255);
-    border: 1px solid rgb(200, 200, 200);
 `
 
 export const Header = styled.div`
     display: flex;
     border-collapse: collapse;
-    border: 1px solid rgb(200, 200, 200);
     background-color: rgb(252,253,254);
     height: 60px;
     line-height: 60px;
@@ -41,7 +39,8 @@ export const HeaderItems = styled.div`
 `
 export const HeaderProgress = styled.div`
     flex: 1;
-    border: 1px solid rgb(200, 200, 200);
+    border-top: 1px solid rgb(200, 200, 200);
+    border-bottom: 1px solid rgb(200, 200, 200);
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -120,7 +119,10 @@ export const CardsSection = styled.div`
     display: flex;
     overflow: hidden;
     align-items: center;
-    height: 675px
+    height: 675px;
+    border-left: 1px solid rgb(200, 200, 200);
+    border-right: 1px solid rgb(200, 200, 200);
+    border-bottom: 1px solid rgb(200, 200, 200);
 `
     
 export const Card = styled.div`
