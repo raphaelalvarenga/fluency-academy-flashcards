@@ -187,7 +187,41 @@ export const PlayButton = styled.button`
     background-color: rgb(72, 174, 224);
     color: rgb(255, 255, 255);
     cursor: pointer;
+    transition: 0.3s;
     &:hover {
         background-color: rgb(42, 142, 182);
     }
+`
+
+// border-style: solid;
+export const DifficultButtons = styled.div`
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    width: 683px;
+    margin: auto;
+`
+
+export const DifficultButton = styled.button`
+    padding: 25px 45px;
+    background-color: rgb(72, 174, 224);
+    border-style: none;
+    color: rgb(255, 255, 255);
+    border-radius: 8px;
+    margin-top: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    &:hover {
+        background-color: rgb(42, 142, 182);
+    }
+`
+
+export const CardSection = styled.div`
+    
+`
+
+export const DifficultButtonLabel = styled.div`
+    margin-top: 10px;
+    color: rgb(180, 180, 180);
 `

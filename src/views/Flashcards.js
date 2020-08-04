@@ -3,7 +3,8 @@ import {
     Container, Content, Header, HeaderItems, HeaderProgress, Button,
     ProgressBarOutside, ProgressBarInside, DivFlex, StyledLink, CardsSection,
     Card, CardHeader, CardContent, CardAnswer, CardQuestion, CardAudio,
-    PlayButton
+    PlayButton, DifficultButtons, DifficultButton, CardSection,
+    DifficultButtonLabel
 } from "../styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faInfo, faSlidersH, faSync, faPlay } from "@fortawesome/free-solid-svg-icons";
@@ -16,6 +17,7 @@ const Flashcards = () => {
     
     return (
         <Content>
+            {cardMargin}
             <Header>
                 <HeaderItems>
                     <Button color = "danger" fill = "outlined"><FontAwesomeIcon icon = {faArrowLeft} /> Sair</Button>
@@ -86,15 +88,43 @@ const Flashcards = () => {
                                 {/* <Button
                                     fill = "outlined"
                                     disabled = {index === 0 ? true : false}
-                                    onClick = {() => setCardMargin(cardMargin + 889)}
+                                    onClick = {() => setCardMargin(cardMargin + 925)}
                                 >Anterior</Button>
 
                                 <Button
                                     fill = "outlined"
                                     disabled = {index === cards.length - 1 ? true : false}
-                                    onClick = {() => setCardMargin(cardMargin - 889)}
+                                    onClick = {() => setCardMargin(cardMargin - 925)}
                                 >Próximo</Button> */}
                             </div>
+
+
+                            {/* <DifficultButtons marginLeft = {index === 0 ? `${cardMargin}px` : 0}>
+                                <div>
+                                    <div>
+                                        <DifficultButton>FÁCIL</DifficultButton>
+                                    </div>
+                                    <DifficultButtonLabel>Digite 1</DifficultButtonLabel>
+                                </div>
+                                <div>
+                                    <div>
+                                        <DifficultButton>BOM</DifficultButton>
+                                    </div>
+                                    <DifficultButtonLabel>Digite 2</DifficultButtonLabel>
+                                </div>
+                                <div>
+                                    <div>
+                                        <DifficultButton>DIFÍCIL</DifficultButton>
+                                    </div>
+                                    <DifficultButtonLabel>Digite 3</DifficultButtonLabel>
+                                </div>
+                                <div>
+                                    <div>
+                                        <DifficultButton>NÃO LEMBRO</DifficultButton>
+                                    </div>
+                                    <DifficultButtonLabel>Digite 4</DifficultButtonLabel>
+                                </div>
+                            </DifficultButtons> */}
                         </Card>
                     ))
                 }
