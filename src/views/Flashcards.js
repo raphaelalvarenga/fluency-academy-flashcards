@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Container, Content, Header, HeaderItems, HeaderProgress, Button, ProgressBarOutside, ProgressBarInside, DivFlex } from "../styled-components";
+import { Container, Content, Header, HeaderItems, HeaderProgress, Button, ProgressBarOutside, ProgressBarInside, DivFlex, StyledLink } from "../styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft, faInfo, faSlidersH } from "@fortawesome/free-solid-svg-icons";
 
 const Flashcards = () => {
 
@@ -33,9 +33,14 @@ const Flashcards = () => {
                             }
                         </ProgressBarOutside>
                     </DivFlex>
+                    <div style = {{marginLeft: "10px", fontSize: "12px"}}>10/12</div>
                 </HeaderProgress>
-                <HeaderItems>Faça um tour</HeaderItems>
-                <HeaderItems>Controles</HeaderItems>
+                <HeaderItems>
+                    <StyledLink href = "#"><FontAwesomeIcon icon = {faInfo}/> Faça um tour</StyledLink>
+                </HeaderItems>
+                <HeaderItems>
+                    <StyledLink href = "#"><FontAwesomeIcon icon = {faSlidersH}/> Controles</StyledLink>
+                </HeaderItems>
                 <HeaderItems>Ícone</HeaderItems>
             </Header>
             <div>2</div>

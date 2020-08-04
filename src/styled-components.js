@@ -42,7 +42,6 @@ export const HeaderItems = styled.div`
 `
 export const HeaderProgress = styled.div`
     flex: 1;
-    text-align: center;
     border: 1px solid rgb(200, 200, 200);
     display: flex;
     justify-content: space-around;
@@ -56,6 +55,10 @@ export const Button = styled.button`
     cursor: pointer;
     outline-style: none;
     padding: 5px 15px;
+    transition: 0.3s;
+    &:hover {
+        background-color: rgb(240, 240, 240);
+    }
 
     ${
         props => props.color === "danger" && css`
@@ -105,4 +108,11 @@ export const DivFlex = styled.div`
             flex: ${props.flex}
         `
     }
+`
+
+export const StyledLink = styled.a`
+    color: rgb(72,174,224);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 12px;
 `
