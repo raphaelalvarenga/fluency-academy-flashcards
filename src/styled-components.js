@@ -6,6 +6,7 @@ export const GlobalStyle = createGlobalStyle`
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+        font-family: Arial
     }
 `
 
@@ -45,6 +46,7 @@ export const HeaderProgress = styled.div`
     border: 1px solid rgb(200, 200, 200);
     display: flex;
     justify-content: space-around;
+    align-items: center;
     padding: 0 20px;
 `
 
@@ -69,4 +71,38 @@ export const Button = styled.button`
         `
     }
 `
-        
+export const ProgressBarOutside = styled.div`
+    border-style: solid;
+    height: 25px;
+    line-height: 25px;
+    border-color: rgb(200, 200, 200);
+    border-width: 1px;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+`
+    
+    export const ProgressBarInside = styled.div`
+    background-color: rgb(64,212,111);
+    height: 25px;
+    line-height: 25px;
+    width: 0;
+    margin-left: 20px;
+
+    ${
+        props => props.percent  && css`
+            width: ${props.percent};
+            color: rgb(255, 255, 255);
+            margin-left: 0;
+            text-align: right;
+        `
+    }
+`
+
+export const DivFlex = styled.div`
+    ${
+        props => props.flex && css`
+            flex: ${props.flex}
+        `
+    }
+`
