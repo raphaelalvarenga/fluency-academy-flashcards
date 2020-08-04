@@ -11,6 +11,7 @@ const Flashcards = () => {
 
     const [progressBarValue, setProgressBarValue] = useState(0);
     const [cardMargin, setCardMargin] = useState(340);
+    const [cards, setCards] = useState([1, 2, 3, 4, 5]);
     
     return (
         <Content>
@@ -52,36 +53,25 @@ const Flashcards = () => {
             
 
             <CardsSection>
-                <Card marginLeft = {`${cardMargin}px`}>
-                    <div style = {{textAlign: "center"}}>
-                        <Button fill = "outlined" onClick = {() => setCardMargin(cardMargin + 889)}>Anterior</Button>
-                        <Button fill = "outlined" onClick = {() => setCardMargin(cardMargin - 889)}>Próximo</Button>
-                    </div>
-                </Card>
-                <Card>
-                    <div style = {{textAlign: "center"}}>
-                        <Button fill = "outlined" onClick = {() => setCardMargin(cardMargin + 889)}>Anterior</Button>
-                        <Button fill = "outlined" onClick = {() => setCardMargin(cardMargin - 889)}>Próximo</Button>
-                    </div>
-                </Card>
-                <Card>
-                    <div style = {{textAlign: "center"}}>
-                        <Button fill = "outlined" onClick = {() => setCardMargin(cardMargin + 889)}>Anterior</Button>
-                        <Button fill = "outlined" onClick = {() => setCardMargin(cardMargin - 889)}>Próximo</Button>
-                    </div>
-                </Card>
-                <Card>
-                    <div style = {{textAlign: "center"}}>
-                        <Button fill = "outlined" onClick = {() => setCardMargin(cardMargin + 889)}>Anterior</Button>
-                        <Button fill = "outlined" onClick = {() => setCardMargin(cardMargin - 889)}>Próximo</Button>
-                    </div>
-                </Card>
-                <Card>
-                    <div style = {{textAlign: "center"}}>
-                        <Button fill = "outlined" onClick = {() => setCardMargin(cardMargin + 889)}>Anterior</Button>
-                        <Button fill = "outlined" onClick = {() => setCardMargin(cardMargin - 889)}>Próximo</Button>
-                    </div>
-                </Card>
+                {
+                    cards.map((card, index) => (
+                        <Card marginLeft = {index === 0 ? `${cardMargin}px` : 0}>
+                            <div style = {{textAlign: "center"}}>
+                                <Button
+                                    fill = "outlined"
+                                    disabled = {index === 0 ? true : false}
+                                    onClick = {() => setCardMargin(cardMargin + 889)}
+                                >Anterior</Button>
+
+                                <Button
+                                    fill = "outlined"
+                                    disabled = {index === cards.length - 1 ? true : false}
+                                    onClick = {() => setCardMargin(cardMargin - 889)}
+                                >Próximo</Button>
+                            </div>
+                        </Card>
+                    ))
+                }
             </CardsSection>
         </Content>
     )

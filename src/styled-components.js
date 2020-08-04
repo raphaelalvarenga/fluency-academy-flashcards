@@ -131,7 +131,7 @@ export const Card = styled.div`
     line-height: 340px;
     text-align: center;
     margin-right: 200px;
-    transition: 1s;
+    transition: 0.5s;
 
     ${
         props => props.marginLeft && css`
