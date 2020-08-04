@@ -116,3 +116,26 @@ export const StyledLink = styled.a`
     font-weight: bold;
     font-size: 12px;
 `
+
+export const CardsSection = styled.div`
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    height: 675px
+`
+    
+export const Card = styled.div`
+    border-style: solid;
+    min-width: 683px;
+    min-height: 340px;
+    line-height: 340px;
+    text-align: center;
+    margin-right: 200px;
+    transition: 1s;
+
+    ${
+        props => props.marginLeft && css`
+            margin-left: ${props.marginLeft}
+        `
+    }
+`
