@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import {
-    Container, Content, Header, HeaderItems, HeaderProgress, Button,
-    ProgressBarOutside, ProgressBarInside, DivFlex, StyledLink, CardsSection,
-    Card, CardHeader, CardContent, CardAnswer, CardQuestion, CardAudio,
-    PlayButton, DifficultButtons, DifficultButton, CardSection,
-    DifficultButtonLabel
+    Content, Header, HeaderItems, HeaderProgress, Button, ProgressBarOutside,
+    ProgressBarInside, DivFlex, StyledLink, CardsSection, Card, CardHeader,
+    CardContent, CardAnswer, CardQuestion, CardAudio, PlayButton, DifficultButtons,
+    DifficultButton, CardSection, DifficultButtonLabel
 } from "../styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faInfo, faSlidersH, faSync, faPlay } from "@fortawesome/free-solid-svg-icons";
@@ -55,7 +54,7 @@ const Flashcards = () => {
             <CardsSection>
                 {
                     cards.map((card, index) => (
-                        <CardSection marginLeft = {index === 0 ? `${cardMargin}px` : 0}>
+                        <CardSection marginLeft = {index === 0 ? `${cardMargin}px` : 0} key = {index}>
                             <Card>
                                 <CardHeader>
                                     <div>

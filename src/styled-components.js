@@ -60,7 +60,7 @@ export const Button = styled.button`
 
     ${
         props => props.color === "danger" && css`
-            color: red;
+            color: rgb(242,69,86);
         `
     }
 
@@ -131,7 +131,7 @@ export const CardSection = styled.div`
     margin-right: 200px;
     ${
         props => props.marginLeft && css`
-            margin-left: ${props.marginLeft}
+            margin-left: ${props.marginLeft};
         `
     }
 `
@@ -141,12 +141,12 @@ export const Card = styled.div`
     min-width: 683px;
     min-height: 340px;
     text-align: center;
-    
     padding: 15px 20px;
     border-width: 1px;
     background-color: rgb(255, 255, 255);
-    border-color: rgb(200, 200, 200);
+    border-color: rgb(205,224,226);
     border-radius: 20px;
+    box-shadow: 5px 5px 15px rgb(205,224,226);
 `
     
 
@@ -175,6 +175,7 @@ export const CardQuestion = styled.div`
     height: 150px;
     font-weight: bold;
     width: 90%;
+    color: rgb(242,69,86);
 `
 
 export const CardAudio = styled.div`
