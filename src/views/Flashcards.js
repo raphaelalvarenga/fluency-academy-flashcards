@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import {
     Content, Header, HeaderItems, HeaderProgress, Button, ProgressBarOutside,
     ProgressBarInside, DivFlex, StyledLink, CardsSection, Card, CardHeader,
-    CardContent, CardAnswer, CardQuestion, CardAudio, PlayButton, DifficultButtons,
-    DifficultButton, CardSection, DifficultButtonLabel
+    CardContent, CardAnswer, CardQuestion, CardAudio, PlayButton, LevelButtons,
+    LevelButton, CardSection, LevelButtonLabel
 } from "../styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faInfo, faSlidersH, faSync, faPlay } from "@fortawesome/free-solid-svg-icons";
@@ -54,6 +54,7 @@ const Flashcards = () => {
                 questionText,
                 responseText: {text: response.data[0].notes[1].field, show: false},
                 audioTag,
+                disableLevelButtons: true,
                 active: index === 0 ? true : false
             }
         });
@@ -68,6 +69,7 @@ const Flashcards = () => {
             return card === cardLoop ?
                         {
                             ...cardLoop,
+                            disableLevelButtons: !cardLoop.disableLevelButtons,
                             responseText: {
                                 ...cardLoop.responseText,
                                 show: !cardLoop.responseText.show
@@ -155,32 +157,32 @@ const Flashcards = () => {
                                 </CardContent>
                             </Card>
 
-                            <DifficultButtons marginLeft = {index === 0 ? `${cardMargin}px` : 0}>
+                            <LevelButtons marginLeft = {index === 0 ? `${cardMargin}px` : 0}>
                                 <div>
                                     <div>
-                                        <DifficultButton>FÁCIL</DifficultButton>
+                                        <LevelButton disabled = {card.disableLevelButtons}>FÁCIL</LevelButton>
                                     </div>
-                                    <DifficultButtonLabel>Digite 1</DifficultButtonLabel>
+                                    <LevelButtonLabel>Digite 1</LevelButtonLabel>
                                 </div>
                                 <div>
                                     <div>
-                                        <DifficultButton>BOM</DifficultButton>
+                                        <LevelButton disabled = {card.disableLevelButtons}>BOM</LevelButton>
                                     </div>
-                                    <DifficultButtonLabel>Digite 2</DifficultButtonLabel>
+                                    <LevelButtonLabel>Digite 2</LevelButtonLabel>
                                 </div>
                                 <div>
                                     <div>
-                                        <DifficultButton>DIFÍCIL</DifficultButton>
+                                        <LevelButton disabled = {card.disableLevelButtons}>DIFÍCIL</LevelButton>
                                     </div>
-                                    <DifficultButtonLabel>Digite 3</DifficultButtonLabel>
+                                    <LevelButtonLabel>Digite 3</LevelButtonLabel>
                                 </div>
                                 <div>
                                     <div>
-                                        <DifficultButton>NÃO LEMBRO</DifficultButton>
+                                        <LevelButton disabled = {card.disableLevelButtons}>NÃO LEMBRO</LevelButton>
                                     </div>
-                                    <DifficultButtonLabel>Digite 4</DifficultButtonLabel>
+                                    <LevelButtonLabel>Digite 4</LevelButtonLabel>
                                 </div>
-                            </DifficultButtons>
+                            </LevelButtons>
 
 
                             

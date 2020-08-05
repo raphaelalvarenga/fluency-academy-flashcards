@@ -214,7 +214,7 @@ export const PlayButton = styled.button`
     }
 `
 
-export const DifficultButtons = styled.div`
+export const LevelButtons = styled.div`
     display: flex;
     justify-content: space-around;
     text-align: center;
@@ -222,22 +222,41 @@ export const DifficultButtons = styled.div`
     margin: auto;
 `
 
-export const DifficultButton = styled.button`
-    padding: 25px 45px;
-    background-color: rgb(72, 174, 224);
+export const LevelButton = styled.button`
+    padding: 25px 0px;
     border-style: none;
-    color: rgb(255, 255, 255);
     border-radius: 8px;
     margin-top: 50px;
     font-weight: bold;
-    cursor: pointer;
     transition: 0.3s;
-    &:hover {
-        background-color: rgb(42, 142, 182);
+    width: 130px;
+
+    ${
+        props => {
+            if (!props.disabled) {
+                return css`
+                    background-color: rgb(72, 174, 224);
+                    color: rgb(255, 255, 255);
+                    cursor: pointer;
+                    border-style: solid;
+                    border-color: rgb(72, 174, 224);
+                    &:hover {
+                        background-color: rgb(42, 142, 182);
+                        border-color: rgb(42, 142, 182);
+                    }
+                `;
+            } else {
+                return css`
+                    background-color: rgb(238,248,251);
+                    color: rgb(201,223,229);
+                    border-style: solid;
+                    border-color: rgb(201,223,229);
+                `
+            }
+        }
     }
 `
-
-export const DifficultButtonLabel = styled.div`
+export const LevelButtonLabel = styled.div`
     margin-top: 10px;
     color: rgb(180, 180, 180);
 `
