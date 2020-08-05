@@ -120,7 +120,11 @@ const Flashcards = () => {
             <CardsSection>
                 {
                     cards.map((card, index) => (
-                        <CardSection marginLeft = {index === 0 ? `${cardMargin}px` : 0} key = {index}>
+                        <CardSection
+                            marginLeft = {index === 0 ? `${cardMargin}px` : 0}
+                            opacity = {card.active ? 1 : 0.3}
+                            key = {index}
+                        >
                             <Card>
                                 <CardHeader>
                                     <div>

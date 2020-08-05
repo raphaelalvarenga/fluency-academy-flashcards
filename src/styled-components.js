@@ -130,9 +130,17 @@ export const CardSection = styled.div`
     border-width: 1px;
     margin-right: 200px;
     ${
-        props => props.marginLeft && css`
-            margin-left: ${props.marginLeft};
-        `
+        props => {
+            if (props.marginLeft) {
+                css`margin-left: ${props.marginLeft};`
+            }
+
+            if (props.opacity) {
+                css`opacity: ${props.opacity};`
+            }
+
+            return css;
+        }
     }
 `
 
