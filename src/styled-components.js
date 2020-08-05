@@ -89,6 +89,7 @@ export const ProgressBarOutside = styled.div`
     line-height: 25px;
     width: 0;
     margin-left: 20px;
+    transition: 0.5s;
 
     ${
         props => props.percent  && css`
