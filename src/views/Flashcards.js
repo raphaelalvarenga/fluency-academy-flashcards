@@ -3,7 +3,7 @@ import {
     Content, Header, HeaderItems, HeaderProgress, Button, ProgressBarOutside,
     ProgressBarInside, DivFlex, StyledLink, CardsSection, Card, CardHeader,
     CardContent, CardAnswer, CardQuestion, CardAudio, PlayButton, LevelButtons,
-    LevelButton, CardSection, LevelButtonLabel
+    LevelButton, CardSection, LevelButtonLabel, Tooltip
 } from "../styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faInfo, faSlidersH, faSync, faPlay } from "@fortawesome/free-solid-svg-icons";
@@ -13,6 +13,7 @@ const Flashcards = () => {
     const [progressBarValue, setProgressBarValue] = useState(0);
     const [cardMargin, setCardMargin] = useState(340);
     const [cards, setCards] = useState([]);
+    const [tooltip, setTooltip] = useState(false);
 
     useEffect(() => {
         getFlashcardsById();
@@ -213,14 +214,24 @@ const Flashcards = () => {
                             opacity = {card.active ? 1 : 0.3}
                             key = {index}
                         >
+                            <Tooltip show = {tooltip}>&#9251; <b>Dica:</b> Você também pode virar a carta com a tecla espaço do seu teclado!</Tooltip>
                             <Card>
                                 <CardHeader>
                                     <div>
-                                        <Button color = "danger" onClick = {() => flipCard(card)}>
+                                        <Button
+                                            color = "danger"
+                                            onClick = {() => flipCard(card)}
+                                            onMouseOver = {() => setTooltip(true)}
+                                            onMouseLeave = {() => setTooltip(false)}
+                                        >
                                             <FontAwesomeIcon icon = {faSync} /> Virar Carta
                                         </Button>
                                     </div>
-                                    <div>A \ B</div>
+                                    <div>
+                                        <span style = {{color: card.responseText.show ? "grey" : "black", transition: "0.3s"}}>A </span>
+                                        \ 
+                                        <span style = {{color: card.responseText.show ? "black" : "grey", transition: "0.3s"}}> B</span>
+                                    </div>
                                 </CardHeader>
 
                                 <CardContent>

@@ -117,6 +117,18 @@ export const StyledLink = styled.a`
     font-size: 12px;
 `
 
+export const Tooltip = styled.div`
+    margin: 0 0 10px 35px;
+    color: rgb(180, 180, 180);
+    font-family: Arial;
+    font-size: 13px;
+    transition: 0.3s;
+    
+    ${
+        props => props.show ? css`opacity: 1;` : css`opacity: 0;`
+    }
+`
+
 export const CardsSection = styled.div`
     display: flex;
     overflow: hidden;
