@@ -168,6 +168,11 @@ export const CardAnswer = styled.div`
     width: 50%;
     color: rgb(180, 180, 180);
     font-size: 18px;
+    transition: 0.3s;
+    
+    ${
+        props => css`opacity: ${props.opacity === 1 ? 1 : 0};`
+    }
 `
 
 export const CardQuestion = styled.div`
