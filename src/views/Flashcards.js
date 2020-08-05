@@ -117,38 +117,43 @@ const Flashcards = () => {
 
     const hotkey = (e) => {
         
+        // Get the current card based on active === true
         const card = cards.find(cardLoop => cardLoop.active);
+        const cardIndex = cards.findIndex(cardLoop => card === cardLoop);
 
-        switch (e.key) {
-            case " ":
-                flipCard(card);
-                break;
+        // Do something just if an active card has been found
+        if (cardIndex !== -1) {
+            switch (e.key) {
+                case " ":
+                    flipCard(card);
+                    break;
 
-            case "1":
-                if (card.responseText.show) {
-                    setLevel("facil", card);
-                }
-                break;
+                case "1":
+                    if (card.responseText.show) {
+                        setLevel("facil", card);
+                    }
+                    break;
 
-            case "2":
-                if (card.responseText.show) {
-                    setLevel("bom", card);
-                }
-                break;
+                case "2":
+                    if (card.responseText.show) {
+                        setLevel("bom", card);
+                    }
+                    break;
 
-            case "3":
-                if (card.responseText.show) {
-                    setLevel("dificil", card);
-                }
-                break;
+                case "3":
+                    if (card.responseText.show) {
+                        setLevel("dificil", card);
+                    }
+                    break;
 
-            case "4":
-                if (card.responseText.show) {
-                    setLevel("nao_lembro", card);
-                }
-                break;
+                case "4":
+                    if (card.responseText.show) {
+                        setLevel("nao_lembro", card);
+                    }
+                    break;
 
-            default: break;
+                default: break;
+            }
         }
     }
     
@@ -178,7 +183,18 @@ const Flashcards = () => {
                             }
                         </ProgressBarOutside>
                     </DivFlex>
-                    <div style = {{marginLeft: "10px", fontSize: "12px"}}>10/12</div>
+                    <div
+                        style = {{marginLeft: "10px", fontSize: "12px"}}
+                    >
+                        {
+                            cards.findIndex(card => card.active) === -1 ?
+                                cards.length
+                                :
+                                cards.findIndex(card => card.active)
+                        }
+                        
+                        /{cards.length}
+                    </div>
                 </HeaderProgress>
                 <HeaderItems>
                     <StyledLink href = "#"><FontAwesomeIcon icon = {faInfo}/> Faça um tour</StyledLink>
