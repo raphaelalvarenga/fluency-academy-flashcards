@@ -47,18 +47,12 @@ const Flashcards = () => {
             audioLink = audioLink.trim();
             audioLink = audioLink.slice(0, audioLink.length - 1);
 
-            const audioTag =  (
-                <audio controls = "controls" preload = "auto" autobuffer = "true">
-                    <source src = {audioLink} />
-                </audio>
-            );
-
             return {
                 id: item.card.id,
                 deckId: item.card.deckId,
                 questionText,
                 responseText: {text: item.notes[1].field, show: false},
-                audioTag,
+                audioLink,
                 disableLevelButtons: true,
                 level: null,
                 active: index === 0 ? true : false
@@ -245,10 +239,20 @@ const Flashcards = () => {
 
                                     <CardAudio>
                                         <div>
-                                            {card.audioTag}
+                                            <audio
+                                                controls = "controls"
+                                                preload = "auto"
+                                                autobuffer = "true" id = {`audio-${index}`}
+                                                style = {{display: "none"}}
+                                            >
+                                                <source src = {card.audioLink} />
+                                            </audio>
                                         </div>
                                         <div>
-                                            <PlayButton><FontAwesomeIcon icon = {faPlay} /></PlayButton>
+                                            <PlayButton onClick = {() => {
+                                                const audio = document.getElementById(`audio-${index}`)
+                                                audio.play();
+                                            }}><FontAwesomeIcon icon = {faPlay} /></PlayButton>
                                         </div>
                                     </CardAudio>
                                 </CardContent>

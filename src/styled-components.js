@@ -227,6 +227,7 @@ export const PlayButton = styled.button`
     color: rgb(255, 255, 255);
     cursor: pointer;
     transition: 0.3s;
+    outline-style: none;
     &:hover {
         background-color: rgb(102, 204, 254);
     }
