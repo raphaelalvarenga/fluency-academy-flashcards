@@ -232,6 +232,7 @@ export const LevelButton = styled.button`
     font-weight: bold;
     transition: 0.3s;
     width: 130px;
+    outline-style: none;
 
     ${
         props => {
