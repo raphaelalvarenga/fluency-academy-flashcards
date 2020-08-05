@@ -23,6 +23,7 @@ export const Content = styled.div`
     width: 1366px;
     height: 768px;
     background-color: rgb(246,253,255);
+    outline-style: none;
 `
 
 export const Header = styled.div`

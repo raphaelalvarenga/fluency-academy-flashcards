@@ -114,9 +114,46 @@ const Flashcards = () => {
 
         setProgressBarValue(completedCards / cards.length * 100);
     }
+
+    const hotkey = (e) => {
+        
+        const card = cards.find(cardLoop => cardLoop.active);
+
+        switch (e.key) {
+            case " ":
+                flipCard(card);
+                break;
+
+            case "1":
+                if (card.responseText.show) {
+                    setLevel("facil", card);
+                }
+                break;
+
+            case "2":
+                if (card.responseText.show) {
+                    setLevel("bom", card);
+                }
+                break;
+
+            case "3":
+                if (card.responseText.show) {
+                    setLevel("dificil", card);
+                }
+                break;
+
+            case "4":
+                if (card.responseText.show) {
+                    setLevel("nao_lembro", card);
+                }
+                break;
+
+            default: break;
+        }
+    }
     
     return (
-        <Content>
+        <Content tabIndex = {0} onKeyUp = {(e) => hotkey(e)}>
             <Header>
                 <HeaderItems>
                     <Button color = "danger" fill = "outlined"><FontAwesomeIcon icon = {faArrowLeft} /> Sair</Button>
