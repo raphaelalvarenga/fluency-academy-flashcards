@@ -27,15 +27,15 @@ const Flashcards = () => {
         const cards = response.data.map((item, index) => {
 
             // Getting the question text
-            const endIndexQuestioText = response.data[0].notes[0].field.indexOf("<br>");
-            const questionText = response.data[0].notes[0].field.substring(0, endIndexQuestioText).trim();
+            const endIndexQuestioText = item.notes[0].field.indexOf("<br>");
+            const questionText = item.notes[0].field.substring(0, endIndexQuestioText).trim();
 
             // Getting start and end indexes of the audio tag
-            const audioInit = response.data[0].notes[0].field.indexOf("<audio");
-            const audioEnd = response.data[0].notes[0].field.indexOf("</audio>") + 8;
+            const audioInit = item.notes[0].field.indexOf("<audio");
+            const audioEnd = item.notes[0].field.indexOf("</audio>") + 8;
 
             // Getting the audio tag through the indexes
-            const audioHTML = response.data[0].notes[0].field.substring(audioInit, audioEnd);
+            const audioHTML = item.notes[0].field.substring(audioInit, audioEnd);
 
             // Gerring start and end indexes of the audio link
             const audioLinkInit = audioHTML.indexOf("https");
@@ -56,7 +56,7 @@ const Flashcards = () => {
                 id: item.card.id,
                 deckId: item.card.deckId,
                 questionText,
-                responseText: {text: response.data[0].notes[1].field, show: false},
+                responseText: {text: item.notes[1].field, show: false},
                 audioTag,
                 disableLevelButtons: true,
                 level: null,
