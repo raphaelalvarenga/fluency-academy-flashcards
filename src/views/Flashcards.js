@@ -228,7 +228,7 @@ const Flashcards = () => {
                                         <div>{card.responseText.text}</div>
                                     </CardAnswer>
 
-                                    <CardQuestion>
+                                    <CardQuestion show = {card.responseText.show}>
                                         <div>{card.questionText}</div>
                                     </CardQuestion>
 

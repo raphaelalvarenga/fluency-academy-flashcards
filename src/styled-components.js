@@ -190,7 +190,11 @@ export const CardQuestion = styled.div`
     height: 150px;
     font-weight: bold;
     width: 90%;
-    color: rgb(242,69,86);
+
+    ${
+        props => props.show ? css`color: black;` : css`color: rgb(242,69,86);`
+    }
+    
 `
 
 export const CardAudio = styled.div`
@@ -212,7 +216,7 @@ export const PlayButton = styled.button`
     cursor: pointer;
     transition: 0.3s;
     &:hover {
-        background-color: rgb(42, 142, 182);
+        background-color: rgb(102, 204, 254);
     }
 `
 
@@ -244,8 +248,8 @@ export const LevelButton = styled.button`
                     border-style: solid;
                     border-color: rgb(72, 174, 224);
                     &:hover {
-                        background-color: rgb(42, 142, 182);
-                        border-color: rgb(42, 142, 182);
+                        background-color: rgb(102, 204, 254);
+                        border-color: rgb(102, 204, 254);
                     }
                 `;
             } else {
