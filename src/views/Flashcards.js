@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import {
     Content, Header, HeaderItems, HeaderProgress, Button, ProgressBarOutside,
     ProgressBarInside, DivFlex, StyledLink, CardsSection, Card, CardHeader,
-    CardContent, CardAnswer, CardQuestion, CardAudio, PlayButton, LevelButtons,
+    CardContent, CardAnswer, CardQuestion, LevelButtons,
     LevelButton, CardSection, LevelButtonLabel, Tooltip
 } from "../styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faInfo, faSlidersH, faSync, faPlay } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft, faInfo, faSlidersH, faSync } from "@fortawesome/free-solid-svg-icons";
+import Audio from "../components/Audio";
 
 const Flashcards = () => {
 
@@ -237,24 +238,7 @@ const Flashcards = () => {
                                         <div>{card.questionText}</div>
                                     </CardQuestion>
 
-                                    <CardAudio>
-                                        <div>
-                                            <audio
-                                                controls = "controls"
-                                                preload = "auto"
-                                                autobuffer = "true" id = {`audio-${index}`}
-                                                style = {{display: "none"}}
-                                            >
-                                                <source src = {card.audioLink} />
-                                            </audio>
-                                        </div>
-                                        <div>
-                                            <PlayButton onClick = {() => {
-                                                const audio = document.getElementById(`audio-${index}`)
-                                                audio.play();
-                                            }}><FontAwesomeIcon icon = {faPlay} /></PlayButton>
-                                        </div>
-                                    </CardAudio>
+                                    <Audio src = {card.audioLink} />
                                 </CardContent>
                             </Card>
 
