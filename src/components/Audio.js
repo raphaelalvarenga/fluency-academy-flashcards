@@ -1,12 +1,12 @@
 import React, { useRef, useState, useEffect } from "react";
 import { CardAudio, PlayButton, AudioTrack, AudioBackgroundRed, AudioBackgroundGrey, AudioFrequencyHigh, AudioFrequencyLow, AudioFrequencyTick } from "../styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlay } from "@fortawesome/free-solid-svg-icons";
+import { faPlay, faPause } from "@fortawesome/free-solid-svg-icons";
 
 const Audio = ({ src }) => {
     const audioRef = useRef();
 
-    const [audio, setAudio] = useState({duration: "0s", width: "0%"});
+    const [audio, setAudio] = useState({duration: "0s", width: "0%", icon: faPlay, isPlaying: false});
     const [highTicks, setHighTicks] = useState([]);
     const [lowTicks, setLowTicks] = useState([]);
     const [greyBackground, setGreyBackground] = useState(0);
@@ -20,8 +20,13 @@ const Audio = ({ src }) => {
     }
 
     const play = () => {
-        setAudio({duration: `${audioRef.current.duration}s`, width: "100%"});
+        setAudio({duration: `${audioRef.current.duration}s`, width: "100%", icon: faPause, isPlaying: true});
         audioRef.current.play();
+    }
+
+    const stop = () => {
+        setAudio({duration: "0s", width: "0%", icon: faPlay, isPlaying: false});
+        audioRef.current.load();
     }
 
     useEffect(() => {
@@ -47,9 +52,12 @@ const Audio = ({ src }) => {
                     autobuffer = "true"
                     style = {{display: "none"}}
                     ref = {audioRef}
+                    id = "teste"
+                    onEnded = {stop}
                 >
                     <source src={src} />
                 </audio>
+
                 <AudioTrack>
                     <AudioBackgroundGrey width = {greyBackground}></AudioBackgroundGrey>
                     <AudioBackgroundRed duration = {audio.duration} width = {audio.width}></AudioBackgroundRed>
@@ -68,8 +76,8 @@ const Audio = ({ src }) => {
             </div>
 
             <div>
-                <PlayButton onClick = {play}>
-                    <FontAwesomeIcon icon = {faPlay} />
+                <PlayButton onClick = {audio.isPlaying ? stop : play}>
+                    <FontAwesomeIcon icon = {audio.icon} />
                 </PlayButton>
             </div>
         </CardAudio>

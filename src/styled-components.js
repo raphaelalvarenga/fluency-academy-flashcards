@@ -302,7 +302,7 @@ export const AudioBackgroundRed = styled.div`
     ${
         props => {
             return css`
-                transition: ${props.duration};
+                transition: ${props.duration} linear;
                 width: ${props.width};
             `
         }
