@@ -198,7 +198,11 @@ const Flashcards = () => {
                 <HeaderItems>
                     <StyledLink href = "#"><FontAwesomeIcon icon = {faSlidersH}/> Controles</StyledLink>
                 </HeaderItems>
-                <HeaderItems>Ícone</HeaderItems>
+                <HeaderItems>
+                    <div style = {{paddingTop: "10px"}}>
+                        <img src = {require("../assets/fox.png")} />
+                    </div>
+                </HeaderItems>
             </Header>
 
             <CardsSection>
