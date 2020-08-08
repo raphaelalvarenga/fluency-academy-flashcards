@@ -330,3 +330,40 @@ export const AudioFrequencyTick = styled.div`
         props => css`height: ${props.tick}px;`
     }
 `
+
+export const LoginContent = styled.form`
+    border-style: solid;
+    border-color: rgb(205,224,226);
+    border-radius: 8px;
+    padding: 18px 10px;
+    width: 400px;
+    margin: auto;
+    margin-top: 100px;
+`
+
+export const FormGroup = styled.div`
+    padding: 14px 0;
+    text-align: center;
+`
+
+export const Input = styled.input`
+    border-style: none;
+    border-bottom-style: solid;
+    background-color: transparent;
+    border-width: 1px;
+    width: 300px;
+    outline-style: none;
+    font-size: 18px;
+    text-align: center;
+`
+
+export const LoginButton = styled.button`
+    border-style: none;
+    border-radius: 3px;
+    padding: 5px 0;
+    background-color: rgb(72, 174, 224);
+    color: white;
+    box-shadow: 1px 1px 5px 1px rgb(72, 174, 224);
+    width: 100px;
+    font-size: 18px;
+`
