@@ -280,3 +280,53 @@ export const LevelButtonLabel = styled.div`
     margin-top: 10px;
     color: rgb(180, 180, 180);
 `
+
+export const AudioTrack = styled.div`
+    width: 350px;
+    height: 50px;
+`
+
+export const AudioBackgroundGrey = styled.div`
+    height: 50px;
+    background-color: rgb(211,211,211);
+
+    ${
+        props => css`width: ${props.width}%;`
+    }
+`
+
+export const AudioBackgroundRed = styled.div`
+    height: 50px;
+    margin-top: -50px;
+    background-color: rgb(242,69,86);
+    ${
+        props => {
+            return css`
+                transition: ${props.duration};
+                width: ${props.width};
+            `
+        }
+    }
+`
+
+export const AudioFrequencyHigh = styled.div`
+    display: flex;
+    margin-top: -50px;
+    height: 25px;
+`
+
+export const AudioFrequencyLow = styled.div`
+    display: flex;
+    height: 25px;
+    align-items: flex-end;
+`
+
+export const AudioFrequencyTick = styled.div`
+    width: 2px;
+    
+    background-color: white;
+
+    ${
+        props => css`height: ${props.tick}px;`
+    }
+`
