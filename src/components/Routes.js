@@ -20,7 +20,7 @@ const Routes = (props) => {
     return (
         <Switch>
             <Route path = "/login" component = {Login} />
-            <PrivateRoute exact path = "/flashcards" component = {Flashcards} />
+            <PrivateRoute exact path = "/" component = {Flashcards} />
         </Switch>
     )
 }

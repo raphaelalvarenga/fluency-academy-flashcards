@@ -201,7 +201,7 @@ const Flashcards = () => {
                     </HeaderItems>
                     <HeaderItems>
                         <div style = {{paddingTop: "10px"}}>
-                            <img src = {require("../assets/fox.png")} />
+                            <img src = {require("../assets/fox.png")} alt = "fox-image" />
                         </div>
                     </HeaderItems>
                 </Header>
