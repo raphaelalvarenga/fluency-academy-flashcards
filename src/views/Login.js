@@ -7,6 +7,7 @@ const Login = () => {
     const [email, setEmail] = useState({value: "", showLabel: false});
     const [password, setPassword] = useState({value: "", showLabel: false});
     const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState({show: false, message: ""});
     const history = useHistory();
 
     const login = async (event) => {
@@ -20,6 +21,10 @@ const Login = () => {
         }
 
         setIsLoading(true);
+        setError({
+            show: false,
+            message: ""
+        });
         
         await fetch("https://cors-anywhere.herokuapp.com/https://hackit.app/login", {
             method: "POST",
@@ -35,9 +40,21 @@ const Login = () => {
                 if (email.value === "qa14@hackit.app" && password.value === "qa14") {
                     localStorage.setItem("isLogged", "true");
                     history.push("/");
+                } else {
+                    setError({
+                        show: true,
+                        message: "Wrong credentials!"
+                    });
                 }
+                setIsLoading(false);
             })
-            .catch(error => console.log(error))
+            .catch(error => {
+                setError({
+                    show: true,
+                    message: `There was an error. Contact support team and send this information: ${error}`
+                });
+                setIsLoading(false);
+            })
 
     }
     
@@ -74,6 +91,14 @@ const Login = () => {
                 isLoading ? <Loader size = "small"></Loader> : (
                     <FormGroup>
                         <LoginButton onClick = {(event) => login(event)}>Login</LoginButton>
+                    </FormGroup>
+                )
+            }
+
+            {
+                error.show && (
+                    <FormGroup>
+                        <InputLabel>{error.message}</InputLabel>
                     </FormGroup>
                 )
             }
