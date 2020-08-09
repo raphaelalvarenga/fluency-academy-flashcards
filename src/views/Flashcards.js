@@ -108,7 +108,7 @@ const Flashcards = () => {
 
     const calcProgress = () => {
         let completedCards = 0;
-        cards.map(cardLoop => {
+        cards.forEach(cardLoop => {
             if (cardLoop.level !== null) {
                 completedCards++;
             }
@@ -214,7 +214,7 @@ const Flashcards = () => {
                     </HeaderItems>
                     <HeaderItems>
                         <div style = {{paddingTop: "10px"}}>
-                            <img src = {require("../assets/fox.png")} alt = "fox-image" />
+                            <img src = {require("../assets/fox.png")} alt = "the-fox-thing-in-the-corner" />
                         </div>
                     </HeaderItems>
                 </Header>
@@ -302,7 +302,7 @@ const Flashcards = () => {
                                 </CardSection>
                             ))
                             :
-                            <Loader></Loader>
+                            <Loader size = "large"></Loader>
                     }
                 </CardsSection>
             </Content>

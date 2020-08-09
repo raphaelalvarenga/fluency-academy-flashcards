@@ -365,6 +365,7 @@ export const Input = styled.input`
     outline-style: none;
     font-size: 18px;
     text-align: center;
+    color: rgb(150, 150, 150);
 `
 
 export const LoginButton = styled.button`
@@ -391,11 +392,31 @@ export const InputLabel = styled.small`
 `
 
 export const Loader = styled.div`
-    border: 16px solid rgb(205,224,226);
-    border-top: 16px solid rgb(102, 204, 254);
+    
     margin: auto;
-    width: 100px;
-    height: 100px;
     border-radius: 50%;
     animation: ${rotate} 2s linear infinite;
+
+    ${
+        props => {
+            if (props.size === "small") {
+                return css`
+                    width: 20px;
+                    height: 20px;
+                    border: 5px solid rgb(205,224,226);
+                    border-top: 5px solid rgb(102, 204, 254);
+                    margin: 14.5px auto;
+                `
+            }
+
+            if (props.size === "large") {
+                return css`
+                    width: 100px;
+                    height: 100px;
+                    border: 16px solid rgb(205,224,226);
+                    border-top: 16px solid rgb(102, 204, 254);
+                `
+            }
+        }
+    }
 `

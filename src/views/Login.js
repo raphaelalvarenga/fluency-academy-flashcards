@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { LoginContent, FormGroup, Input, LoginButton, InputLabel } from "../styled-components";
+import { LoginContent, FormGroup, Input, LoginButton, InputLabel, Loader } from "../styled-components";
 import { useHistory } from "react-router-dom"
 
 const Login = () => {
 
     const [email, setEmail] = useState({value: "", showLabel: false});
     const [password, setPassword] = useState({value: "", showLabel: false});
+    const [isLoading, setIsLoading] = useState(false);
     const history = useHistory();
 
     const login = async (event) => {
@@ -17,6 +18,8 @@ const Login = () => {
             password.value === "" ? setPassword({...password, showLabel: true}) : setEmail({...password, showLabel: false});
             return false;
         }
+
+        setIsLoading(true);
         
         await fetch("https://cors-anywhere.herokuapp.com/https://hackit.app/login", {
             method: "POST",
@@ -34,7 +37,7 @@ const Login = () => {
                     history.push("/");
                 }
             })
-            .catch(error => console.log(error));
+            .catch(error => console.log(error))
 
     }
     
@@ -67,9 +70,14 @@ const Login = () => {
                 }
             </FormGroup>
 
-            <FormGroup>
-                <LoginButton onClick = {(event) => login(event)}>Login</LoginButton>
-            </FormGroup>
+            {
+                isLoading ? <Loader size = "small"></Loader> : (
+                    <FormGroup>
+                        <LoginButton onClick = {(event) => login(event)}>Login</LoginButton>
+                    </FormGroup>
+                )
+            }
+            
         </LoginContent>
     )
 }
