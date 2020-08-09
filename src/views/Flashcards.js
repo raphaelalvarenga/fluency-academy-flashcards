@@ -227,6 +227,7 @@ const Flashcards = () => {
                                     marginLeft = {index === 0 ? `${cardMargin}px` : 0}
                                     opacity = {card.active ? 1 : 0.3}
                                     key = {index}
+                                    marginTop = {card.active ? "0px" : "80px"}
                                 >
                                     <Tooltip show = {tooltip}>&#9251; <b>Dica:</b> Você também pode virar a carta com a tecla espaço do seu teclado!</Tooltip>
                                     <Card>

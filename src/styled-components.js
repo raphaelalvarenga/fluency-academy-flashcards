@@ -163,6 +163,10 @@ export const CardSection = styled.div`
                 css`opacity: ${props.opacity};`
             }
 
+            if (props.marginTop) {
+                css`margin-top: ${props.marginTop}`;
+            }
+
             return css;
         }
     }
