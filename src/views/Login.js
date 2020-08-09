@@ -21,10 +21,10 @@ const Login = () => {
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
             },
-            body: {
+            body: JSON.stringify({
                 email: email.value,
                 password: password.value
-            }
+            })
         })
             .then(res => console.log(res))
             .catch(error => console.log(error));
