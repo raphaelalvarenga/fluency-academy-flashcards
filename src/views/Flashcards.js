@@ -2,12 +2,13 @@ import React, { useState, useEffect } from "react";
 import {
     Content, Header, HeaderItems, HeaderProgress, Button, ProgressBarOutside,
     ProgressBarInside, DivFlex, StyledLink, CardsSection, Card, CardHeader,
-    CardContent, CardAnswer, CardQuestion, LevelButtons,
+    CardContent, CardAnswer, CardQuestion, LevelButtons, Loader,
     LevelButton, CardSection, LevelButtonLabel, Tooltip, Container
 } from "../styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faInfo, faSlidersH, faSync } from "@fortawesome/free-solid-svg-icons";
 import Audio from "../components/Audio";
+import { useHistory } from "react-router-dom";
 
 const Flashcards = () => {
 
@@ -15,6 +16,7 @@ const Flashcards = () => {
     const [cardMargin, setCardMargin] = useState(340);
     const [cards, setCards] = useState([]);
     const [tooltip, setTooltip] = useState(false);
+    const history = useHistory();
 
     useEffect(() => {
         getFlashcardsById();
@@ -156,13 +158,20 @@ const Flashcards = () => {
             }
         }
     }
+
+    const logout = () => {
+        localStorage.setItem("isLogged", "false");
+        history.push("/login");
+    }
     
     return (
         <Container>
             <Content tabIndex = {0} onKeyUp = {(e) => hotkey(e)}>
                 <Header>
                     <HeaderItems>
-                        <Button color = "danger" fill = "outlined"><FontAwesomeIcon icon = {faArrowLeft} /> Sair</Button>
+                        <Button color = "danger" fill = "outlined" onClick = {logout}>
+                            <FontAwesomeIcon icon = {faArrowLeft} /> Sair
+                        </Button>
                     </HeaderItems>
                     <HeaderProgress>
                         <DivFlex flex = {1}>
@@ -212,85 +221,88 @@ const Flashcards = () => {
 
                 <CardsSection>
                     {
-                        cards.map((card, index) => (
-                            <CardSection
-                                marginLeft = {index === 0 ? `${cardMargin}px` : 0}
-                                opacity = {card.active ? 1 : 0.3}
-                                key = {index}
-                            >
-                                <Tooltip show = {tooltip}>&#9251; <b>Dica:</b> Você também pode virar a carta com a tecla espaço do seu teclado!</Tooltip>
-                                <Card>
-                                    <CardHeader>
-                                        <div>
-                                            <Button
-                                                color = "danger"
-                                                onClick = {() => flipCard(card)}
-                                                onMouseOver = {() => setTooltip(true)}
-                                                onMouseLeave = {() => setTooltip(false)}
-                                            >
-                                                <FontAwesomeIcon icon = {faSync} /> Virar Carta
-                                            </Button>
-                                        </div>
-                                        <div>
-                                            <span style = {{color: card.responseText.show ? "grey" : "black", transition: "0.3s"}}>A </span>
-                                            \ 
-                                            <span style = {{color: card.responseText.show ? "black" : "grey", transition: "0.3s"}}> B</span>
-                                        </div>
-                                    </CardHeader>
+                        cards.length > 0 ?
+                            cards.map((card, index) => (
+                                <CardSection
+                                    marginLeft = {index === 0 ? `${cardMargin}px` : 0}
+                                    opacity = {card.active ? 1 : 0.3}
+                                    key = {index}
+                                >
+                                    <Tooltip show = {tooltip}>&#9251; <b>Dica:</b> Você também pode virar a carta com a tecla espaço do seu teclado!</Tooltip>
+                                    <Card>
+                                        <CardHeader>
+                                            <div>
+                                                <Button
+                                                    color = "danger"
+                                                    onClick = {() => flipCard(card)}
+                                                    onMouseOver = {() => setTooltip(true)}
+                                                    onMouseLeave = {() => setTooltip(false)}
+                                                >
+                                                    <FontAwesomeIcon icon = {faSync} /> Virar Carta
+                                                </Button>
+                                            </div>
+                                            <div>
+                                                <span style = {{color: card.responseText.show ? "grey" : "black", transition: "0.3s"}}>A </span>
+                                                \ 
+                                                <span style = {{color: card.responseText.show ? "black" : "grey", transition: "0.3s"}}> B</span>
+                                            </div>
+                                        </CardHeader>
 
-                                    <CardContent>
-                                        <CardAnswer opacity = {card.responseText.show ? 1 : 0}>
-                                            <div>{card.responseText.text}</div>
-                                        </CardAnswer>
+                                        <CardContent>
+                                            <CardAnswer opacity = {card.responseText.show ? 1 : 0}>
+                                                <div>{card.responseText.text}</div>
+                                            </CardAnswer>
 
-                                        <CardQuestion show = {card.responseText.show}>
-                                            <div>{card.questionText}</div>
-                                        </CardQuestion>
+                                            <CardQuestion show = {card.responseText.show}>
+                                                <div>{card.questionText}</div>
+                                            </CardQuestion>
 
-                                        <Audio src = {card.audioLink} />
-                                    </CardContent>
-                                </Card>
+                                            <Audio src = {card.audioLink} />
+                                        </CardContent>
+                                    </Card>
 
-                                <LevelButtons marginLeft = {index === 0 ? `${cardMargin}px` : 0}>
-                                    <div>
+                                    <LevelButtons marginLeft = {index === 0 ? `${cardMargin}px` : 0}>
                                         <div>
-                                            <LevelButton
-                                                disabled = {card.disableLevelButtons}
-                                                onClick = {() => setLevel("facil", card)}
-                                            >FÁCIL</LevelButton>
+                                            <div>
+                                                <LevelButton
+                                                    disabled = {card.disableLevelButtons}
+                                                    onClick = {() => setLevel("facil", card)}
+                                                >FÁCIL</LevelButton>
+                                            </div>
+                                            <LevelButtonLabel>Digite 1</LevelButtonLabel>
                                         </div>
-                                        <LevelButtonLabel>Digite 1</LevelButtonLabel>
-                                    </div>
-                                    <div>
                                         <div>
-                                            <LevelButton
-                                                disabled = {card.disableLevelButtons}
-                                                onClick = {() => setLevel("bom", card)}
-                                            >BOM</LevelButton>
+                                            <div>
+                                                <LevelButton
+                                                    disabled = {card.disableLevelButtons}
+                                                    onClick = {() => setLevel("bom", card)}
+                                                >BOM</LevelButton>
+                                            </div>
+                                            <LevelButtonLabel>Digite 2</LevelButtonLabel>
                                         </div>
-                                        <LevelButtonLabel>Digite 2</LevelButtonLabel>
-                                    </div>
-                                    <div>
                                         <div>
-                                            <LevelButton
-                                                disabled = {card.disableLevelButtons}
-                                                onClick = {() => setLevel("dificil", card)}
-                                            >DIFÍCIL</LevelButton>
+                                            <div>
+                                                <LevelButton
+                                                    disabled = {card.disableLevelButtons}
+                                                    onClick = {() => setLevel("dificil", card)}
+                                                >DIFÍCIL</LevelButton>
+                                            </div>
+                                            <LevelButtonLabel>Digite 3</LevelButtonLabel>
                                         </div>
-                                        <LevelButtonLabel>Digite 3</LevelButtonLabel>
-                                    </div>
-                                    <div>
                                         <div>
-                                            <LevelButton
-                                                disabled = {card.disableLevelButtons}
-                                                onClick = {() => setLevel("nao_lembro", card)}
-                                            >NÃO LEMBRO</LevelButton>
+                                            <div>
+                                                <LevelButton
+                                                    disabled = {card.disableLevelButtons}
+                                                    onClick = {() => setLevel("nao_lembro", card)}
+                                                >NÃO LEMBRO</LevelButton>
+                                            </div>
+                                            <LevelButtonLabel>Digite 4</LevelButtonLabel>
                                         </div>
-                                        <LevelButtonLabel>Digite 4</LevelButtonLabel>
-                                    </div>
-                                </LevelButtons>
-                            </CardSection>
-                        ))
+                                    </LevelButtons>
+                                </CardSection>
+                            ))
+                            :
+                            <Loader></Loader>
                     }
                 </CardsSection>
             </Content>

@@ -7,7 +7,7 @@ import { Route, Redirect, Switch } from "react-router-dom";
 const PrivateRoute = ({ component: Component, ...rest}) => (
     <Route
         {...rest}
-        render = {props => true ? (
+        render = {props => JSON.parse(localStorage.getItem("isLogged")) ? (
             <Component {...props} />
         ) : (
             <Redirect to = {{pathname: "/login", state: {from: props.location}}} />

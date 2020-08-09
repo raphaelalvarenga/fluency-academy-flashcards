@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { LoginContent, FormGroup, Input, LoginButton, InputLabel } from "../styled-components";
+import { useHistory } from "react-router-dom"
 
 const Login = () => {
 
     const [email, setEmail] = useState({value: "", showLabel: false});
     const [password, setPassword] = useState({value: "", showLabel: false});
+    const history = useHistory();
 
     const login = async (event) => {
         event.preventDefault();
@@ -16,7 +18,7 @@ const Login = () => {
             return false;
         }
         
-        await fetch("https://hackit.app/login", {
+        await fetch("https://cors-anywhere.herokuapp.com/https://hackit.app/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
@@ -26,7 +28,12 @@ const Login = () => {
                 password: password.value
             })
         })
-            .then(res => console.log(res))
+            .then(res => {
+                if (email.value === "qa14@hackit.app" && password.value === "qa14") {
+                    localStorage.setItem("isLogged", "true");
+                    history.push("/");
+                }
+            })
             .catch(error => console.log(error));
 
     }

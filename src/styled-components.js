@@ -1,4 +1,14 @@
-import styled, { createGlobalStyle, css } from "styled-components";
+import styled, { createGlobalStyle, css, keyframes } from "styled-components";
+
+const rotate = keyframes`
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+`;
 
 export const GlobalStyle = createGlobalStyle`
     body {
@@ -378,4 +388,14 @@ export const InputLabel = styled.small`
     font-family: Arial;
     font-weight: bold;
     color: rgb(242,69,86);
+`
+
+export const Loader = styled.div`
+    border: 16px solid rgb(205,224,226);
+    border-top: 16px solid rgb(102, 204, 254);
+    margin: auto;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    animation: ${rotate} 2s linear infinite;
 `
