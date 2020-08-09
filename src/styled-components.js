@@ -366,4 +366,16 @@ export const LoginButton = styled.button`
     box-shadow: 1px 1px 5px 1px rgb(72, 174, 224);
     width: 100px;
     font-size: 18px;
+    outline-style: none;
+    cursor: pointer;
+    &:hover {
+        background-color: rgb(102, 204, 254);
+    }
+`
+
+export const InputLabel = styled.small`
+    text-align: start;
+    font-family: Arial;
+    font-weight: bold;
+    color: rgb(242,69,86);
 `
