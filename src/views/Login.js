@@ -4,12 +4,14 @@ import { useHistory } from "react-router-dom"
 
 const Login = () => {
 
+    // States
     const [email, setEmail] = useState({value: "", showLabel: false});
     const [password, setPassword] = useState({value: "", showLabel: false});
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState({show: false, message: ""});
     const history = useHistory();
 
+    // This method is triggered when user clicks on "Login"
     const login = async (event) => {
         event.preventDefault();
 
@@ -20,7 +22,10 @@ const Login = () => {
             return false;
         }
 
+        // The loader needs to show itself
         setIsLoading(true);
+
+        // Any errors must hide
         setError({
             show: false,
             message: ""

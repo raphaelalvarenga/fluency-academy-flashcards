@@ -4,13 +4,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay, faPause } from "@fortawesome/free-solid-svg-icons";
 
 const Audio = ({ src }) => {
+
+    // This const will be used to manipulate audio setting play, pause, etc.
     const audioRef = useRef();
 
+    // States
     const [audio, setAudio] = useState({duration: "0s", width: "0%", icon: faPlay, isPlaying: false});
     const [highTicks, setHighTicks] = useState([]);
     const [lowTicks, setLowTicks] = useState([]);
     const [greyBackground, setGreyBackground] = useState(0);
 
+    // As soon as the component mounts, style the audio track background-color
     useEffect(() => {
         setWidth();
     }, [lowTicks]);
@@ -19,16 +23,19 @@ const Audio = ({ src }) => {
         setGreyBackground(100);
     }
 
+    // This method is used to play the audio and so to do some style routines
     const play = () => {
         setAudio({duration: `${audioRef.current.duration}s`, width: "100%", icon: faPause, isPlaying: true});
         audioRef.current.play();
     }
 
+    // This method is used to stop the audio
     const stop = () => {
         setAudio({duration: "0s", width: "0%", icon: faPlay, isPlaying: false});
         audioRef.current.load();
     }
 
+    // Setting random audio track
     useEffect(() => {
         const tempTicks = [];
         for (let x = 0; x < 175; x++) {

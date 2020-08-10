@@ -12,20 +12,24 @@ import { useHistory } from "react-router-dom";
 
 const Flashcards = () => {
 
+    // States
     const [progressBarValue, setProgressBarValue] = useState(0);
     const [cardMargin, setCardMargin] = useState(340);
     const [cards, setCards] = useState([]);
     const [tooltip, setTooltip] = useState(false);
     const history = useHistory();
 
+    // When the component mouts, it will get the cards from the server
     useEffect(() => {
         getFlashcardsById();
     }, []);
 
+    // Each card user concludes, this useEffect will calculate the progress bar
     useEffect(() => {
         calcProgress();
     }, [cards])
 
+    // Getting flashcards
     const getFlashcardsById = async () => {
         await fetch("https://cors-anywhere.herokuapp.com/https://hackit.app/webapi/v2/decks/10/cards")
             .then(res => res.json())
@@ -69,6 +73,7 @@ const Flashcards = () => {
             .catch(error => console.log(error));
     }
 
+    // This method is triggered when user flips the card
     const flipCard = (card) => {
 
         // Loop through cards to update the one that will flip
@@ -89,9 +94,13 @@ const Flashcards = () => {
         setCards(newCards);
     }
 
+    // When user marks a card with its level, this method is triggered
     const setLevel = (level, card) => {
+
+        // Find the index of the current card
         const cardIndex = cards.findIndex(cardLoop => cardLoop === card);
 
+        // Loop through all cards updating the current card using the index that was got above
         const newCards = cards.map((cardLoop, loopIndex) => {
             if (card === cardLoop) {
                 return {...cardLoop, level, active: false};
@@ -106,6 +115,7 @@ const Flashcards = () => {
         setCardMargin(cardMargin - 925);
     }
 
+    // This method calculates the progress bar
     const calcProgress = () => {
         let completedCards = 0;
         cards.forEach(cardLoop => {
@@ -117,6 +127,7 @@ const Flashcards = () => {
         setProgressBarValue(completedCards / cards.length * 100);
     }
 
+    // This method handles the interactions with keyboard
     const hotkey = (e) => {
         
         // Get the current card based on active === true
@@ -159,6 +170,7 @@ const Flashcards = () => {
         }
     }
 
+    // Method for logging out
     const logout = () => {
         localStorage.setItem("isLogged", "false");
         history.push("/login");
